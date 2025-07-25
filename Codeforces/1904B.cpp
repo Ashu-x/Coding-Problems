@@ -45,8 +45,8 @@ signed main()
 {
 #ifndef ONLINE_JUDGE
     // freopen("Error.txt", "w", stderr);
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 #endif
     fastio();
     int t = 1;
@@ -61,27 +61,34 @@ signed main()
 void solve() {
   int n;
   cin>>n;
-  int a[n];
-  for(int i = 0; i < n; i++) cin >> a[i];
+  vector<pair<int,int>> a(n);
+  rep(i,0,n) {
+    cin>>a[i].first;
+    a[i].second = i;
+  }
+  vector<int> ans(n), presum(n);
+  sort(a.begin(),a.end());
+  presum[0] = a[0].first;
 
-  vector<int> v;
-  for(int i=1; i<n; i++){
-    if(a[i] < a[i-1]){
-      v.push_back(a[i-1] - a[i]);
-      a[i] = a[i-1] ;
-    } 
+  rep(i,1,n){
+    presum[i] = a[i].first + presum[i-1];
   }
-  int m = v.size();
-  if(m==0){
-    cout<<0<<endl;
-    return ;
+  for(int i=0; i<n; i++){
+
+    int j=i,found=i;
+    while(j<n){
+        pair<int,int> temp={presum[j]+1 , INT_MIN} ;
+        int it = lower_bound(a.begin(), a.end(), temp) - a.begin();
+        it--;
+        if(it==j) break;
+        found += it-j;
+        j=it;
+    }
+    ans[a[i].second] = found;
+    // cout<<a[i].second<<"->"<<found<<endl;
   }
-  sort(v.begin() , v.end());
-  int ans=(m+1)*v[0];
-  for(int i=1; i<m; i++){
-    ans += (m-i + 1)*(a[i] - a[i-1]) ;
-  }
-  out(ans);
+  for(int i:ans) cout<<i<<" ";
+  cout<<endl;
 }
 
-// PROBLEM LINK -> https://codeforces.com/problemset/problem/1987/B
+// PROBLEM LINK -> https://codeforces.com/problemset/problem/1904/B
