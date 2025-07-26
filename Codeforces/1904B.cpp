@@ -85,7 +85,6 @@ void solve() {
         j=it;
     }
     ans[a[i].second] = found;
-    // cout<<a[i].second<<"->"<<found<<endl;
   }
   for(int i:ans) cout<<i<<" ";
   cout<<endl;
