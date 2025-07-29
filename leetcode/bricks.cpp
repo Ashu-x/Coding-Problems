@@ -9,3 +9,4 @@ int leastBricks(vector<vector<int>>& wall) {
         }
     }
     return wall.size() - ans;  
+}
