@@ -29,7 +29,7 @@ bool canPartition(vector<int>& nums) {
     bool dp[sum+1] ;
     dp[0] = true;
     for(int i=0; i<n; i++){
-        for(int j=sum j>=0; j--){
+        for(int j=sum; j>=n-1; j--){
             if(dp[j]) continue;
             if(dp[j-arr[i]]) dp[j] = true;
             if(dp[-1]) return true;
