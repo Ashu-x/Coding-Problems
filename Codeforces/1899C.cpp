@@ -63,28 +63,20 @@ void solve() {
   cin>>n;
   int a[n];
   rep(i,0,n) cin>>a[i];
-
-  int pre[n];
-  pre[0] = a[0];
+  int ans = a[0];
+  int sum=a[0];
+  
   rep(i,1,n){
-    pre[i] = a[i] + pre[i-1];
-  }
-  int ans=0;
-  for(int k=1; k<n; k++){
+    if(sum < 0) sum=0;
     
-  if(n%k) continue;
-  int start = k-1 ;
-  
-  int maxi = pre[start];
-  int mini = pre[start];
-  
-  for(int i=start+k ; i<n; i+=k){
-    int sum = pre[i] - pre[i-k] ;
-    maxi = max(maxi , sum);
-    mini = min(mini , sum);
-  }
-    ans = max(ans, maxi-mini);
+    if(abs(a[i-1])%2 != abs(a[i])%2){
+      sum += a[i];
+    } 
+    else sum = a[i];
+    
+    ans = max(ans,sum);
+    
   }
   out(ans);
 }
-// https://codeforces.com/problemset/problem/1899/B
+// https://codeforces.com/contest/1899/problem/C
