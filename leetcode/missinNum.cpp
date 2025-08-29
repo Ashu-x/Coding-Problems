@@ -1,9 +1,9 @@
 int missingNumber(vector<int>& nums) { //Using XOR
         int x1 =0,x2=0;
         int n= nums.size();
-        for(int i=1; i<=n; i++) x2 ^= i ;
         for(int i:nums){
             x1 ^= i ;
+            x2 = x2^(i+1);
         }
     return x1^x2 ;
 }
