@@ -5,7 +5,8 @@ int check(int x){   // we write a check func will make some elements zeroes and 
     if(a[0] > a[x]) return 1;
     else return 0;
 }
-// arr[] = [9 ,  , 1]
+// arr[] = [3,5,9,1,2] 
+//         [0,0,0,1,1]
 int main(){
     int n,x;
     int arr[100010];
