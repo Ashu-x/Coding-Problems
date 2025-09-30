@@ -5,7 +5,7 @@ vector<int> rootToleafPath(TreeNode* root,int target){
     return ans; 
 }
 
-bool array(TreeNode* root, vector<int>& ans){
+bool array(TreeNode* root, vector<int>& ans, int target){
     if(root==NULL) false;
 
     ans.push_back(root->val);
