@@ -13,10 +13,10 @@ TreeNode* lcafind(TreeNode* root, TreeNode* p, TreeNode* q){
     if(root == NULL) return NULL;
     int curr = root->val;
     if(curr < q->val && curr < p->val){
-        lcafind(root->right, p,q);
+        return lcafind(root->right, p,q);
     }
     if(curr > q->val && curr > p->val){
-        lcafind(root->left, p,q);
+        return lcafind(root->left, p,q);
     }
     return root;
 }
