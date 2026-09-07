@@ -1,7 +1,3 @@
-Problem:
-Consider a game where there are n children (numbered 1,2,\dots,n) in a circle. During the game, every second child is removed from the circle, until there are no children left.
-Your task is to process q queries of the form: "when there are n children, who is the kth child that will be removed?"
-
 # Josephus Queries
 ## Problem
 
