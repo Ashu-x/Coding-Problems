@@ -34,7 +34,19 @@ class Solution {
             }
             if(leftValue != nullptr) ans.push_back(leftValue->data);
         }
-        return ans;
-        
+        return ans;    
     }
 };
+
+// Using DFS
+void leftView(TreeNode* root, int currLevel, int & maxLevel){
+    if(root == NULL) return  ;
+    if(currLevel > maxLevel){
+        cout<<root->val<<endl;
+        maxLevel = currLevel;
+    }
+    leftView(root->left, currLevel + 1, maxLevel);
+    leftView(root->right, currLevel + 1, maxLevel);
+}
+
+leftView(root, 1, maxlevel=0);
