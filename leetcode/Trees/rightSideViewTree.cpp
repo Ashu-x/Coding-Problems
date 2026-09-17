@@ -34,3 +34,14 @@ public:
         return ans;
     }
 };
+
+void rightView(TreeNode* root, int currLevel, int & maxLevel){
+    if(root == NULL) return  ;
+    if(currLevel > maxLevel){
+        cout<<root->val<<endl;
+        maxLevel = currLevel;
+    }
+    leftView(root->right, currLevel + 1, maxLevel);
+    leftView(root->left, currLevel + 1, maxLevel);
+}
+rightView(root, 1, maxLevel=0);
